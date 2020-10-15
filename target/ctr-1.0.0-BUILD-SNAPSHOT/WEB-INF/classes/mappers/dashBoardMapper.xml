@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DashBoardMap">
+	<select id="getRealdata" resultType="org.csui.vo.RealDashVO">
+		select 
+			TO_CHAR(SYSDATE, 'YYYYMMDD') stt_date, 
+			count(*) success
+		from real_call_info where r_time_stamp BETWEEN TO_CHAR(SYSDATE,'YYYYMMDD')||'000000' and TO_CHAR(SYSDATE, 'YYYYMMDD')||'999999'
+		union all
+		SELECT 
+			SUBSTR(s_date, 0,6) stt_date ,
+			case when TO_CHAR(SYSDATE, 'DD') = '01' then 0 else sum(R_STT_SUCCESS) end success
+		FROM statistics_all_t
+		WHERE s_date BETWEEN TO_CHAR(SYSDATE -1, 'YYYYMM') || '00000000'
+			AND TO_CHAR(SYSDATE -1, 'YYYYMMDD')||'999999'
+		GROUP BY SUBSTR(s_date, 0,6)
+	</select>
+
+	<select id="getSemiRealdata" resultType="org.csui.vo.SemiRealDashVO">
+		SELECT
+			SUBSTR(s_date, 0,8) s_date ,
+			sum(N_CTRL_SUCCESS) n_ctrl_success,
+			sum(N_CTRL_FAIL) n_ctrl_fail,
+			sum(N_STT_SUCCESS) n_stt_success,
+			sum(N_STT_FAIL) n_stt_fail,
+			sum(N_STT_RETRY) n_stt_retry,
+			sum(N_TA_SUCCESS) n_ta_success,
+			sum(N_TA_FAIL) n_ta_fail,
+			sum(R_RT_SUCCESS) r_rt_success,
+			sum(R_RT_FAIL) r_rt_fail,
+			sum(R_STT_SUCCESS) r_stt_success,
+			sum(R_STT_FAIL) r_stt_fail,
+			sum(R_TA_SUCCESS) r_ta_success,
+			sum(R_TA_FAIL) r_ta_fail,
+			sum(N_STT_FAIL) etc_cnt
+		FROM statistics_all_t
+		WHERE s_date BETWEEN TO_CHAR(SYSDATE - 1 - 5/24/60, 'YYYYMMDD') || '999999'
+			AND TO_CHAR(SYSDATE - 5/24/60, 'YYYYMMDDHH24MI')
+		GROUP BY SUBSTR(s_date, 0,8)
+		UNION ALL
+		SELECT
+			SUBSTR(s_date, 0,6) s_date,
+			sum(N_CTRL_SUCCESS) n_ctrl_success,
+			sum(N_CTRL_FAIL) n_ctrl_fail,
+			sum(N_STT_SUCCESS) n_stt_success,
+			sum(N_STT_FAIL) n_stt_fail,
+			sum(N_STT_RETRY) n_stt_retry,
+			sum(N_TA_SUCCESS) n_ta_success,
+			sum(N_TA_FAIL) n_ta_fail,
+			sum(R_RT_SUCCESS) r_rt_success,
+			sum(R_RT_FAIL) r_rt_fail,
+			sum(R_STT_SUCCESS) r_stt_success,
+			sum(R_STT_FAIL) r_stt_fail,
+			sum(R_TA_SUCCESS) r_ta_success,
+			sum(R_TA_FAIL) r_ta_fail,
+			sum(N_STT_FAIL) etc_cnt
+		FROM statistics_all_t
+		WHERE s_date BETWEEN TO_CHAR(SYSDATE - 5/24/60, 'YYYYMM') || '00000000' AND
+			TO_CHAR(SYSDATE - 5/24/60, 'YYYYMMDDHH24MI')
+		GROUP BY SUBSTR(s_date, 0,6)
+		UNION ALL
+		select z.* from (
+			select A.s_date,
+				A.n_ctrl_success,
+				A.n_ctrl_fail,
+				A.n_stt_success,
+				A.n_stt_fail,
+				A.n_stt_retry,
+				A.n_ta_success,
+				A.n_ta_fail,
+				A.r_rt_success,
+				A.r_rt_fail,
+				A.r_stt_success,
+				A.r_stt_fail,
+				A.r_ta_success,
+				A.r_ta_fail,
+				A.n_stt_fail etc_cnt
+			FROM statistics_all_t A
+			where s_date <![CDATA[<= ]]> TO_CHAR(SYSDATE - 5/24/60, 'YYYYMMDDHH24MI') order by A.s_date DESC
+		)z where ROWNUM = 1 
+	</select>
+	
+	<select id="getRealSttUserCnt" resultType="org.csui.vo.RealSttUserCntVO">
+	
+		select count(*) stt_user, sum(B.CALL_STATUS) calling_user from (
+			select orgid from wfms_org where orgid in ('1') 
+			UNION all select orgid from wfms_org where porgid in (select orgid from wfms_org where orgid in ('250', '251', '252'))) A 
+			join wfms_user B on A.orgid = B.orgid and B.stt_use_yn = 'Y' 
+		UNION all 
+		select count(*) stt_user, sum(B.CALL_STATUS) calling_user from (
+			select orgid from wfms_org where orgid in ('2') 
+			UNION all select orgid from wfms_org where porgid in (select orgid from wfms_org where orgid in ('250', '251', '252'))) A 
+			join wfms_user B on A.orgid = B.orgid and B.stt_use_yn = 'Y'
+	
+	</select>
+	
+
+</mapper>

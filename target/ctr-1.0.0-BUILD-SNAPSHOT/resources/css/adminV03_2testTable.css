@@ -1,0 +1,108 @@
+.rule table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.rule table tr td {
+  padding: 5px 5px 5px 0px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.table-responsive th {
+    text-align: left;
+    padding-left: 20px;
+}
+
+table span {
+  margin-left: 10px;
+}
+
+.table-responsive .search-container {
+    float: right; 
+}
+
+.search-container input[type=text]{
+  position: relative;
+  padding: 10px 40px 10px 20px;
+  width: 300px;
+  color: #525252;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 10px;
+  background-color: #E9E9E9;
+  transition: width 0.4s ease;
+}
+
+i{
+  position: relative;
+  left: -37px;
+  color: #222;
+}
+
+.search-container input:focus {
+    background-color: #fff;
+    visibility: visible;
+    outline: 2px solid #85C1E9;
+    border-radius: 10px;
+}
+
+.radio_etc {
+    background-color: #E9E9E9; 
+    padding: 10px 20px; 
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.radio_etc table {
+    margin-top: -10px;
+}
+
+
+
+
+
+
+.main .rule .line {
+  width: 100%;
+  height: 10px;
+  background: url(../img/main_rele_line.png) repeat;
+  margin: 20px auto 30px auto;
+
+}
+
+.main .rule .summary {
+  width: 100%;
+  min-height: 100px;
+  background-color: #E9E9E9;
+  border: none;
+  margin: 20px 0px;
+  padding: 10px;
+  font-size: 17px;
+  vertical-align: top;
+}
+
+.main .rule input:focus {
+  background-color: #fff;
+    visibility: visible;
+    outline: 2px solid #85C1E9;
+}
+
+.summary_btn {
+  width: 250px;
+  height: 50px;
+  float: right;
+  background-color: #F4976C;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 17px;
+  font-family: 'Noto Sans KR', sans-serif;
+  outline: none;
+  cursor: pointer;
+}

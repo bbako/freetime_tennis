@@ -1,0 +1,73 @@
+/**/
+.accordion {
+  background-color: #fff;
+  color: #444;
+  cursor: pointer;
+  padding: 20px 20px 0px 20px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+  font-weight: 700;
+  transition: 0.4s;
+}
+
+.accordion span {
+    vertical-align: middle;
+}
+
+.active, .accordion:hover {
+  color: #f66807;
+}
+
+.accordion:before {
+  content: '\2303';
+  color: #777;
+  font-weight: bold;
+  float: left;
+  margin-right: 10px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.active:before {
+  content: '\2304';
+  float: left;
+  margin-right: 10px;
+  font-size: 40px;
+  vertical-align: middle;
+  margin-top: -25px
+}
+
+.panel {
+  padding: 0 0 0 20px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin: 0;
+}
+
+ul {
+    margin: 0; padding: 0;
+}
+
+.panel li {
+  list-style: none;
+  height: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.panel li input {
+    width: 10px; height: 10px;
+}
+.panel li label span {
+    vertical-align: top;
+}
+.panel li label img {
+    width: 20px; 
+    height: 20px;
+    margin: 0px 10px; 
+}

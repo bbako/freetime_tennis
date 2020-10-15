@@ -1,0 +1,54 @@
+.rule table {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.rule table tr td {
+	padding: 5px 5px 5px 0px;
+	vertical-align: top;
+	text-align: left;
+}
+
+.table-responsive th {
+	text-align: left;
+	padding-left: 20px;
+}
+
+table span {
+	margin-left: 10px;
+}
+
+.main .rule .line {
+	width: 100%;
+	height: 10px;
+	background: url(../img/main_rele_line.png) repeat;
+	margin: 20px auto 30px auto;
+}
+
+.main .rule .summary {
+	width: 100%;
+	min-height: 100px;
+	background-color: #E9E9E9;
+	border: none;
+	margin: 20px 0px;
+	padding: 10px;
+	font-size: 17px;
+}
+
+.main .rule input:focus {
+	background-color: #fff;
+	visibility: visible
+}
+
+.summary_btn {
+	width: 250px;
+	height: 50px;
+	float: right;
+	background-color: #F4976C;
+	text-align: center;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 17px;
+	outline: none;
+	cursor: pointer;
+}

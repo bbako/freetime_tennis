@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RecognitionMap">
+	<select id="getRecognitionList" parameterType="HashMap" resultType="org.com.vo.RecognitionVO">
+		select 
+			A.R_FILE_NM
+			, A.R_FILE_PATH
+			, A.R_START_TM
+			, A.R_END_TM
+			, A.R_DURATION
+			, A.R_IO_GBN
+			, A.R_USER_ID
+			, A.R_GROUP_ID
+			, A.R_TEAM_ID
+			, A.R_USER_NM
+			, A.R_STT_DATE
+			, B.status
+			, B.result_date
+			, B.result_rate2 result_rate 
+		from rec_call_info A left join recognition_t B on A.r_file_nm = B.r_file_nm
+		where A.r_file_nm like '%'||#{searchKeyWord}||'%' or r_user_nm like '%'||#{searchKeyWord}||'%' 
+	</select>
+	
+	<select id="getRecognitionStt" parameterType="HashMap" resultType="org.com.vo.RecognitionVO">
+		select 
+			R_FILE_NM
+			, STT_TEXT 
+			, ANSWER_TEXT 
+			, RESULT_RATE1 
+			, RESULT_RATE2 
+			, RESULT_H 
+			, RESULT_D 
+			, RESULT_S 
+			, RESULT_I 
+			, RESULT_N
+			, RESULT_DATE 
+			, STATUS
+		from RECOGNITION_T where r_file_nm = #{r_file_nm}
+	</select>
+	
+	<update id="saveAnswerTextTemp" parameterType="HashMap">
+		update recognition_t SET answer_text = #{answerText} where r_file_nm = #{r_file_nm}
+	</update>
+	
+	<insert id="insertRedMstInfoForRecognition" parameterType="HashMap">
+		INSERT INTO REC_MST_INFO(R_FILE_NM, R_FILE_PATH, R_STT_MODE) VALUES (#{r_file_nm}, #{r_file_path}, '3')
+	</insert>
+	
+	<insert id="insertRecognitionInit" parameterType="HashMap">
+		INSERT INTO RECOGNITIONI_T (R_FILE_NM, STATUS) VALUES (#{r_file_nm}, '1') 
+	</insert>
+	
+	<delete id="deleteRecognitionInit" parameterType="HashMap">
+		DELETE FROM RECOGNITION_T WHERE R FILE NM = #{r_file_nm}
+	</delete>
+	
+	<update id="saveRecognitionResult"  parameterType="HashMap">
+		UPDATE recognition_t 
+		SET RESULT_RATE1 = #{result_rate1}, RESULT_RATE2 = #{result_rate2}, 
+			RESULT_H = #{result_h}, RESULT_D = #{result_d}, RESULT_S = #{result_s}, 
+			RESULT_I = #{result_i}, RESULT_N = #{result_n}, RESULT_DATE = SYSDATE, STATUS = '3'
+		WHERE r_file_nm = #{r_file_nm}
+	</update>
+	
+</mapper>

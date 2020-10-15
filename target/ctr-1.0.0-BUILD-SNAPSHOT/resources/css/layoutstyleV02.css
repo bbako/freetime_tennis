@@ -1,0 +1,82 @@
+* {
+  margin: 0; 
+  padding: 0;
+}
+
+/* Style the body */
+html, body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  background: #7A8E99;
+  height: 100%;
+}
+
+.wrap_container { margin: 0 auto; width: 90%; height: 90%;}
+.header { width: 100%; height: 80px; margin: 20px; padding-top: 20px; overflow: hidden;  }
+.logo { width: 15%; height: auto; text-align: left;  display: inline-block;  vertical-align: top }
+.systemtitle {width: 68%;  height: auto; text-align: center; display: inline-block;  vertical-align: top }
+.time {width: 15%; height: auto; text-align: center; display: inline-block;  vertical-align: top}
+
+.time { color: yellow;}
+
+.wrap { width: 100%; margin: 0 10px;   }
+/*
+.realStt { width: 5rem; height: auto; text-align: left;  display: inline-block; border: 1px solid green; vertical-align: top }
+.real_box { width: 92%;height: auto; text-align: left;  display: inline-block; border: 1px solid red; vertical-align: top }
+
+.real_box .box { width: 32%; border: 1px solid green; display: inline-block;}
+.box h3 img { width: 50px; float: right; padding-right: 10px; vertical-align: top}
+.boxHead { font-size: 30px; font-weight: 700; }
+.box .info { display: table; width: 100%; height: 100%; vertical-align: top }
+.boxHead { display: table-caption; }
+.boxHead .line { width: 70%; height: 10px; background-color: #000; display: inline-block; margin: 0 10px 0 20px; vertical-align: middle }
+.info .boxdata_day {  width: 100%; float: left; font-size: 80px; font-weight: 800; padding: 30px 0 20px 0}
+.info .boxdata_month { width: 100%; font-size: 80px; font-weight: 800; color: #F8E71C; }
+.boxdata_index {  font-size: 20px; font-weight: 600; color: #222; float: right; text-align: right; padding-right: 20px; padding-top: 50px}
+*/
+
+/*realSTT 레이아웃*/
+.realStt { width: 100%; display: table; }
+.realStt .subtitle { width: 10%; display: table-cell; padding-top: 10px }
+.realStt .boxContainer { width: 90%; display: table-cell; vertical-align: top; }
+.realStt .boxContainer .boxlayout { display: table; width: 100%}
+.realStt .boxContainer .boxlayout .box { display: table-cell; width: 33%; }
+.realStt .boxContainer .boxlayout .box .new1 { width: 380px; margin: 0 auto;}
+
+.realStt .boxContainer .boxlayout .box .head { display: table; width: 100%; vertical-align: top }
+.realStt .boxContainer .boxlayout .box .head .ele01 { display: table-cell; width: 10px; vertical-align: middle; font-size: 26px; font-weight: 900;}
+
+.realStt .boxContainer .boxlayout .box .head .ele02 { background-color: #000; width: 280px; height: 5px; margin: 20px auto; vertical-align: top; }
+
+.realStt .boxContainer .boxlayout .box .head .ele03 { display: table-cell}
+.realStt .boxContainer .boxlayout .box .head .ele03 img { padding-right: 100px}
+.realStt .boxContainer .boxlayout .box table { width: 100%; padding-top: 50px }
+.realStt .boxContainer .boxlayout .box table tr td img { width: 50px } 
+.realStt .boxContainer .boxlayout .box table .boxdata_day {  width: 50%; float: left; font-size: 80px; font-weight: 800; color: #000; padding-bottom: 20px; }
+.realStt .boxContainer .boxlayout .box table .boxdata_month {  width: 50%; float: left; font-size: 80px; font-weight: 800; color: #DFFD22 }
+.realStt .boxContainer .boxlayout .box table .boxdata_index { width: 20%; font-size: 20px; font-weight: 600; color: #222; float: right; text-align: right; padding-right: 30px; padding-top: 50px}
+
+.region .ele01 {font-size: 26px; font-weight: 900; padding-left: 30px; padding-bottom: 20px}
+.region .boxdata_day {  width: 50%; float: left; font-size: 80px; font-weight: 800; color: #000; }
+
+/*semiStt레이아웃*/
+.semiStt { width: 100%; display: table; margin-top: 50px;}
+.semiStt .subtitle { width: 10%; display: table-cell; padding-top: 10px}
+.semiStt .boxContainer { width: 90%; display: table-cell; vertical-align: top}
+.semiStt .boxContainer .boxlayout { display: table; width: 100%; }
+.semiStt .boxContainer .boxlayout .box { display: table-cell; width: 25% ; }
+.semiStt .boxContainer .boxlayout .box .new { width: 300px; margin: 0 auto;}
+
+.semiStt .boxContainer .boxlayout .box .head { display: table; width: 100%; vertical-align: top }
+.semiStt .boxContainer .boxlayout .box .head .ele01 { display: table-cell; width: 10px; vertical-align: middle; font-size: 20px; font-weight: 900; }
+
+.semiStt .boxContainer .boxlayout .box .head .ele02 { background-color: #000; width: 250px; height: 5px; margin: 20px auto; vertical-align: top;  }
+
+.semiStt .boxContainer .boxlayout .box .head .ele03 { display: table-cell; padding-right: 20px}
+.semiStt .boxContainer .boxlayout .box table { width: 100%; padding-top: 50px }
+
+.semiStt .boxContainer .boxlayout .box table .boxdata_day {  width: 70%; float: left; font-size: 60px; font-weight: 800; color: #bbb; padding-bottom: 20px; }
+.semiStt .boxContainer .boxlayout .box table .boxdata_month {  width: 70%; float: left; font-size: 60px; font-weight: 800; color: #fff }
+.semiStt .boxContainer .boxlayout .box table .boxdata_index { width: 20%; font-size: 20px; font-weight: 600; color: #222; float: right; padding-top: 40px }
+*/
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MainMap">
+	<select id="getWFMSInfo" parameterType="HashMap" resultType="org.csui.vo.UserVO">
+		SELECT
+			A.USERID,
+			A.USERNAME,
+			A.ORGID,
+			A.USERTYPECD,
+			A.USERTYPECDNM,
+			A.USERDUTYCD,
+			A.USERDUTYCDNM,
+			B.ORGNM
+		FROM WFMS_USER A 
+		LEFT JOIN WFMS_ORG b 
+		ON A.ORGID = B.ORGID 
+		WHERE
+			A.USERID = #{user_id}
+	</select>
+
+	<select id="getUser" parameterType="HashMap" resultType="org.csui.vo.UserVO">
+		SELECT
+			C.* ,
+			D.team_cnt,
+			D.stt_use_cnt
+		FROM (
+			select 
+				A.userid,
+				A.username,
+				A.stt_use_yn,
+				A.call_status,
+				B.orgid,
+				B.orgnm
+			from wfms_user A 
+			left join wfms_org B 
+			on A.orgid = B.orgid
+		) C
+		left join (
+					select 
+						F.orgid,
+						count(F.orgid) team_cnt,
+						sum(case when F.stt_use_yn ='Y' then 1 else 0 end) stt_use_cnt 
+					from (
+						select 
+							A.orgid,
+							A.orgnm,
+							B.userid,
+							B.stt_use_yn
+						from wfms_org A 
+						left join wfms_user B 
+						on A.orgid = B.orgid 
+						where A.orgid in (select 
+											orgid 
+										from wfms_user 
+										where userid = #{user_id}
+										)
+					)F 
+					group by orgid
+		)D on C.orgid = D.orgid
+
+	</select>
+
+	<select id="getUserCnt" parameterType="HashMap" resultType="Map">
+		select 
+			sum(case when C.stt_use_yn='Y' then 1 else 0 end) stt_user, 
+			count(*) total_user 
+		from (
+			select 
+				A.orgid, 
+				B.userid, 
+				B.stt_use_yn 
+			from (
+				select 
+					orgid, 
+					orgnm 
+				from wfms_org 
+				where orgid in ( select orgid from wfms_user A where A.userid = #{user_id})
+			) A 
+			left join wfms_user B 
+			on A.orgid= B.orgid 
+		) C
+	</select>
+
+</mapper>

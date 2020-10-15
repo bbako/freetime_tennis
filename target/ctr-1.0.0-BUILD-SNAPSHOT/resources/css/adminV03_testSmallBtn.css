@@ -1,0 +1,143 @@
+* { 
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    background: #F4976C;
+}
+.left {
+   height: 80px; 
+}
+.left .wrap_container {
+  position: relative;
+  z-index: 12;
+  width: 100%;
+  height: auto;
+  top: 10px;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: 0.5s;
+  padding-top: 0px;
+  display: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  
+}
+
+.header p span {
+    display: inline-block;
+}
+
+.header.openbtn {
+    display: '';
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    background: none;    
+} 
+
+/* Header/logo Title */
+.header {
+    color: white;
+}
+
+.logozone {
+    width: 150px;
+    height: 35px;
+    background-image: url(../img/logo_W.png);
+    background-repeat: no-repeat;
+    background-size: 150px;
+    padding: 10px;
+}
+.header p {
+  padding: 5px 0px 5px 10px;
+}
+
+/* Column container
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.header {
+  padding: 20px;
+  text-align: left;
+  color: #000;
+  width: 20%;
+  height: 80px;
+}
+
+/* ?掛澊 100% ?ろ伂搿??嗢澊 ?彪瓴?[彀胳“ https://ryuseunghyun.tistory.com/889 */
+
+.navbar {
+    height: 500px;
+}
+
+.navbar.search-container {
+    padding-top: 20px;
+}
+
+/* Sidebar/left column */
+.side {
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid #e9e9e9;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.side h3 {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -1;
+  padding: 5px 10px 5px 20px;
+}
+.side h3 img {
+  width: 30px;
+}
+
+.side h3 span {
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.side h3 .head_time {
+  display: inline-block;
+  float: right;
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.head_line {
+  width: auto;
+  height: 15px;
+  background-image: url(../img/head_linebg.png);
+  background-repeat: repeat-x;
+}
+/* Main column */
+.main {
+    width: 100%; height: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #bbb;
+    display: block;
+}
+
+.formtTxt {
+    width: 100%;
+    height: auto;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
