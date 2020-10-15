@@ -27,5 +27,23 @@
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
+	<beans:bean id="loginInterceptor" class="org.com.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" class="org.com.interceptor.AuthInterceptor"></beans:bean>
+
+	<interceptors>
+	
+		<interceptor>
+		<mapping path="/store/loginPost"/>
+		<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+		<mapping path="/**"/> 
+		<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		
+	</interceptors>
+	
+	
 	<context:component-scan base-package="org.com.controller" />
 </beans:beans>
